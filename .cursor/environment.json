@@ -1,0 +1,21 @@
+{
+  "name": "ZS Enterprises Manager",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "install": "npm install",
+  "ports": [
+    {
+      "name": "Vite",
+      "port": 5173
+    }
+  ],
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev",
+      "description": "Vite on port 5173 and the Electron window for ZS Enterprises Manager"
+    }
+  ]
+}

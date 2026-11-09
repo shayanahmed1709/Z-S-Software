@@ -29,7 +29,12 @@ console.log(`Renderer dev server: ${url}`);
 const env = { ...process.env, VITE_DEV_SERVER_URL: url };
 delete env.ELECTRON_RUN_AS_NODE;
 
-const child = spawn(electronPath, ['.'], {
+const electronArgs = ['.'];
+if (process.platform === 'linux') {
+  electronArgs.push('--no-sandbox', '--disable-dev-shm-usage');
+}
+
+const child = spawn(electronPath, electronArgs, {
   cwd: root,
   env,
   stdio: 'inherit',
