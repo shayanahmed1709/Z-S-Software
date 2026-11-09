@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.login-float {
+  position: absolute;
+  animation-name: login-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.login-float-reverse {
+  animation-name: login-drift-reverse;
+}
+
+.login-square {
+  border-radius: 8px;
+}
+
+.login-hex {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+@keyframes login-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(28px, -48px, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(360deg);
+  }
+}
+
+@keyframes login-drift-reverse {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-32px, 36px, 0) rotate(-180deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-float,
+  .login-float-reverse {
+    animation: none;
+  }
+}
